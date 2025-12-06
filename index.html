@@ -50,6 +50,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <!-- Core Libraries -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
@@ -132,8 +133,8 @@ body {
 }
 
 .logo {
-    height: 60px;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    height: 50px;
+    filter: drop-shadow(0 2px 4px rgba(231, 225, 225, 0.1));
 }
 
 .brand-name {
@@ -165,7 +166,7 @@ body {
     background: var(--gold);
     color: var(--deep) !important;
     padding: 10px 24px;
-    border-radius: 6px;
+    border-radius: 5px;
     font-weight: 600;
     transition: all 0.3s ease;
 }
@@ -417,7 +418,7 @@ body {
     background: var(--white);
     border: 1px solid var(--border);
     border-radius: 16px;
-    padding: 32px;
+    padding: 80px;
     transition: all 0.3s ease;
     text-align: center;
     box-shadow: 0 4px 16px rgba(0,0,0,0.05);
@@ -871,6 +872,7 @@ body {
     opacity: 1;
     transform: translateY(0);
     transition: all 0.8s ease;
+    padding: 120px;
 }
 
 /* Form Success State */
@@ -1078,46 +1080,144 @@ html {
 /* Fix 15: Fix progress bar animation */
 .progress-fill {
     will-change: width;
-}/* Hide nav on mobile */
-.nav-links {
-    display: none;
-    flex-direction: column;
-    background: #07173b;
-    position: absolute;
-    top: 80px;
-    left: 0;
-    width: 100%;
-    padding: 20px;
-    z-index: 1000;
 }
-
-/* Show when active */
-.nav-links.active {
+/* DESKTOP VIEW */
+.nav-container {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-/* Hamburger button */
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+/* HIDE hamburger on desktop */
 .hamburger {
+    display: none;
     font-size: 28px;
     background: none;
     border: none;
     color: white;
     cursor: pointer;
-    display: none;
 }
 
-/* Show hamburger on mobile */
+/* MOBILE VIEW */
 @media (max-width: 768px) {
+
+    /* Hamburger visible */
     .hamburger {
         display: block;
     }
+
+    /* Hide nav by default */
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #07173b;
+        padding: 20px;
+        flex-direction: column;
+        text-align: left;
+        z-index: 2000;
+    }
+
+    /* Show nav when active */
+    .nav-links.active {
+        display: flex;
+    }
+
     .nav-links a {
-        padding: 15px 0;
-        display: block;
+        padding: 12px 0;
         color: white;
     }
 }
+/* ... (existing styles) ... */
 
+        /* Enhanced Footer Styles */
+        .footer {
+            background: var(--deep); /* Match nav background for consistency */
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-contact {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-contact-item:hover {
+            color: var(--gold);
+        }
+
+        .footer-contact-item i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .footer-social a {
+            color: var(--white);
+            font-size: 24px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .footer-copyright {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .footer-copyright a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .footer-copyright a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .footer-contact {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .footer-social {
+                gap: 15px;
+            }
+        }
 
 </style>
 </head>
@@ -1125,31 +1225,27 @@ html {
 <!-- Navigation -->
 <header class="main-header">
     <div class="nav-container">
-        <div class="logo-area">
-            <img src="resources/logo.png" alt="Adenola Adegbesan Logo" class="logo">
-            <span class="brand-name">Adenola Adegbesan</span>
-        </div>
-        <header class="main-header">
-    <div class="nav-container">
+
         <div class="logo-area">
             <img src="resources/logo.png" alt="Adenola Adegbesan Logo" class="logo">
             <span class="brand-name">Adenola Adegbesan</span>
         </div>
 
+        <!-- HAMBURGER for mobile only -->
         <button class="hamburger" id="hamburgerBtn">☰</button>
 
-        <nav class="nav-links" id="mobileNav">
+        <nav class="nav-links" id="navMenu">
             <a href="#about">About</a>
             <a href="#services">Services</a>
             <a href="#testimonials">Testimonials</a>
             <a href="#consultation">Consultation</a>
             <a href="#contact" class="nav-btn">Get Clarity</a>
         </nav>
-    </div>
-</header>
 
     </div>
 </header>
+
+
 
 <!-- Hero Section -->
 <section class="hero">
@@ -1436,10 +1532,39 @@ html {
 </section>
 
 <!-- Footer -->
-<footer class="footer">
-    <div class="container">
-        <p>© Adenola Adegbesan - The AI Maverick | <a href="#" style="color: var(--gold);">Privacy Policy</a> | <a href="#" style="color: var(--gold);">Contact</a></p>
-    </div>
+    <footer class="footer">
+        <div class="container">
+            <!-- Contact Details -->
+            <div class="footer-contact">
+                <a href="mailto:info@adenolaadegbesan.co.uk" class="footer-contact-item" aria-label="Email Adenola Adegbesan">
+                    <i class="fas fa-envelope"></i> info@adenolaadegbesan.co.uk
+                </a>
+                <a href="+234 811 269 8170" class="footer-contact-item" aria-label="Call Adenola Adegbesan">
+                    <i class="fas fa-phone"></i> +234 811 269 8170
+                </a>
+            </div>
+
+            <!-- Social Media Handles -->
+            <div class="footer-social">
+                <a href="https://facebook.com/adenolaadegbesan" target="_blank" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://youtube.com/@adenolaadegbesan" target="_blank" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://x.com/adenolaadegbesan" target="_blank" aria-label="X (Twitter)">
+                    <i class="fab fa-x-twitter"></i>
+                </a>
+                <a href="https://linkedin.com/in/adenolaadegbesan" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+
+            <!-- Copyright -->
+            <p class="footer-copyright">
+                © Adenola Adegbesan - The AI Maverick | <a href="#">Privacy Policy</a> | <a href="#">Contact</a>
+            </p>
+        </div>
 </footer>
 
 <!-- Consultation Badge -->
@@ -1457,18 +1582,3 @@ html {
 <script src="main-redesigned.js"></script>
 </body>
 </html>
-<script>
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const mobileNav = document.getElementById('mobileNav');
-
-    hamburgerBtn.addEventListener('click', () => {
-        mobileNav.classList.toggle('active');
-    });
-
-    // Auto close menu when clicking a link
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            mobileNav.classList.remove('active');
-        });
-    });
-</script>
