@@ -1078,7 +1078,47 @@ html {
 /* Fix 15: Fix progress bar animation */
 .progress-fill {
     will-change: width;
+}/* Hide nav on mobile */
+.nav-links {
+    display: none;
+    flex-direction: column;
+    background: #07173b;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    z-index: 1000;
 }
+
+/* Show when active */
+.nav-links.active {
+    display: flex;
+}
+
+/* Hamburger button */
+.hamburger {
+    font-size: 28px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: none;
+}
+
+/* Show hamburger on mobile */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+    .nav-links a {
+        padding: 15px 0;
+        display: block;
+        color: white;
+    }
+}
+
+
 </style>
 </head>
 <body>
@@ -1089,13 +1129,25 @@ html {
             <img src="resources/logo.png" alt="Adenola Adegbesan Logo" class="logo">
             <span class="brand-name">Adenola Adegbesan</span>
         </div>
-        <nav class="nav-links">
+        <header class="main-header">
+    <div class="nav-container">
+        <div class="logo-area">
+            <img src="resources/logo.png" alt="Adenola Adegbesan Logo" class="logo">
+            <span class="brand-name">Adenola Adegbesan</span>
+        </div>
+
+        <button class="hamburger" id="hamburgerBtn">☰</button>
+
+        <nav class="nav-links" id="mobileNav">
             <a href="#about">About</a>
             <a href="#services">Services</a>
             <a href="#testimonials">Testimonials</a>
             <a href="#consultation">Consultation</a>
             <a href="#contact" class="nav-btn">Get Clarity</a>
         </nav>
+    </div>
+</header>
+
     </div>
 </header>
 
@@ -1405,3 +1457,18 @@ html {
 <script src="main-redesigned.js"></script>
 </body>
 </html>
+<script>
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileNav = document.getElementById('mobileNav');
+
+    hamburgerBtn.addEventListener('click', () => {
+        mobileNav.classList.toggle('active');
+    });
+
+    // Auto close menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+        });
+    });
+</script>
