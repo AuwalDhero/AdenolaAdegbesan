@@ -26,6 +26,7 @@ function initializeAnimations() {
         showCursor: true,
         cursorChar: '|'
     });
+    
 
     // Animate stat numbers
     animateStats();
@@ -419,3 +420,19 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+// Mobile menu toggle
+const hamburger = document.getElementById('hamburgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+const overlay = document.getElementById('overlay');
+
+hamburger.addEventListener('click', () => {
+  mobileMenu.classList.toggle('active');
+  overlay.classList.toggle('active');
+  document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+});
+
+overlay.addEventListener('click', () => {
+  mobileMenu.classList.remove('active');
+  overlay.classList.remove('active');
+  document.body.style.overflow = '';
+});
