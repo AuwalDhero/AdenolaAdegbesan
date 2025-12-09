@@ -153,21 +153,26 @@ document.getElementById('newsletterForm')?.addEventListener('submit', function (
 /* -------------------------------------------------
    TYPED TEXT
 ------------------------------------------------- */
-if (typeof Typed !== 'undefined') {
-    new Typed('#typed-text', {
-        strings: [
-            'Strategic AI Clarity',
-            'Cross-Market Excellence',
-            'Business Transformation',
-            'AI Strategy That Works'
-        ],
-        typeSpeed: 60,
-        backSpeed: 40,
-        backDelay: 2000,
-        loop: true,
-        cursorChar: '|'
-    });
-}
+document.addEventListener('DOMContentLoaded', function () {
+    if (typeof Typed !== 'undefined' && document.getElementById('typed-text')) {
+        new Typed('#typed-text', {
+            strings: [
+                'Strategic AI Clarity',
+                'Cross-Market Excellence',
+                'Business Transformation',
+                'AI Strategy That Works'
+            ],
+            typeSpeed: 60,
+            backSpeed: 40,
+            backDelay: 2000,
+            loop: true,
+            showCursor: true,
+            cursorChar: '|'
+        });
+    } else {
+        console.warn('Typed.js not loaded or #typed-text missing');
+    }
+});
 
 
 /* -------------------------------------------------
